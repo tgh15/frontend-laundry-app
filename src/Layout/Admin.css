@@ -1,0 +1,78 @@
+body {
+    font-family: Arial, serif;
+    background-color: #f4f4f4;
+}
+
+.my-navbar {
+    overflow: hidden;
+    background-color: #3b5998;
+    overflow: hidden;
+    height: 63px;
+    transition: 0.5s;
+    display: flex;
+    align-items: center;
+    padding-left: 14px;
+}
+
+
+.my-navbar-brand {
+    color: #f2f2ff;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.side-nav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    opacity: 0.9;
+    overflow-x: hidden;
+    padding-top: 60px;
+    transition: 0.5s;
+}
+
+.side-nav a {
+    padding: 10px 10px 10px 30px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #ccc;
+    display: block;
+    transition: 0.3s;
+    text-align: start;
+}
+
+.side-nav .link:hover {
+    background-color: #ccc;
+    color: #111;
+}
+
+.side-nav .btn-close {
+    position: absolute;
+    top: 0;
+    right: 22px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+#main {
+    padding: 80px 20px 20px 20px;
+    transition: margin-left 0.5s;
+    overflow: hidden;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.right-side-bar {
+    position: relative;
+    top: 0;
+}
+
+.fixed {
+    position: fixed;
+}

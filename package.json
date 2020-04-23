@@ -14,10 +14,12 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.0",
+    "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
     "serve": "^11.3.0"
   },
   "scripts": {
+    "watch": "react-scripts start",
     "dev": "react-scripts start",
     "start": "serve -s build",
     "build": "react-scripts build",
