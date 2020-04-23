@@ -1,23 +1,24 @@
 import React from 'react'
 
+//Components
+import InfoBox from '../../Components/InfoBox/InfoBox'
+
 export default function Dashboard() {
     return (
         <div className="container">
-            <h3>Dashboard</h3>
-            <div className="row">
-                <div className="col-md-12 col-lg-10">
+            <div className="card">
+                <div className="card-body">
+                    <h3>Dashboard</h3>
                     <div className="row">
-                        <div className="col-md-6">
-                            <div className="card">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo, sequi.</p>
-                            </div>
-                        </div>
-                        <div className="col-md-6">
-                            <div className="card">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo, sequi.</p>
-                            </div>
+                        <div className="col-md-3">
+                            <InfoBox text="Testing" number="1000" />
                         </div>
                     </div>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col-md-12 col-lg-10">
+
                 </div>
                 <div className="d-none d-lg-block col-md-2 col-lg-2 right-side-bar fixed-top">
                     <div className="fixed col-md-2">

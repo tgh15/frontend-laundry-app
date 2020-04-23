@@ -11,6 +11,7 @@ import Admin from './Layout/Admin'
 import Dashboard from './Pages/Admin/Dashboard'
 import Profile from './Pages/Admin/Profile';
 import NoMatch from './Pages/NoMatch'
+import Login from './Pages/Login/Login';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/" exact>
           <h1>FrontPage</h1>
         </Route>
+        <Route path="/login" component={Login} />
         <Route
           path="/admin"
           render={({ match: { url } }) => (
