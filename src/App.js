@@ -12,6 +12,8 @@ import Dashboard from './Pages/Admin/Dashboard'
 import Profile from './Pages/Admin/Profile';
 import NoMatch from './Pages/NoMatch'
 import Login from './Pages/Login/Login';
+import Transaksi from './Pages/Admin/Transaksi';
+import Paket from './Pages/Admin/Paket';
 
 function App() {
   return (
@@ -28,6 +30,8 @@ function App() {
               <Admin>
                 <Route path={`${url}/`} component={Dashboard} exact />
                 <Route path={`${url}/profile`} component={Profile} />
+                <Route path={`${url}/transaksi`} component={Transaksi} />
+                <Route path={`${url}/paket`} component={Paket} />
                 {/* <Route component={NoMatch} /> */}
               </Admin>
             </>

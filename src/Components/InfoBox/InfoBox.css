@@ -1,7 +1,7 @@
 .info-box {
     border-radius: .25rem;
-    box-shadow: 0 0 1px rgba(0, 0, 0, .125), 0 1px 3px rgba(0, 0, 0, .2);
-    background: #fff;
+    background-color: #f1f3f6;
+    box-shadow: -3px -3px 7px #ffffffb2, 3px 3px 5px rgba(94, 104, 121, 0.3);
     display: flex;
     min-height: 80px;
     padding: .5rem;

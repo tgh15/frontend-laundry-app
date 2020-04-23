@@ -35,6 +35,8 @@ export default class Admin extends Component {
                     <a href="#" className="btn-close" onClick={this.closeNav}>&times;</a>
                     <Link to="/admin" className="link">Dashboard</Link>
                     <Link to="/admin/profile" className="link">Profile</Link>
+                    <Link to="/admin/transaksi" className="link">Transaksi</Link>
+                    <Link to="/admin/paket" className="link">Paket</Link>
                 </div>
                 <div id="main">
                     {this.props.children}
