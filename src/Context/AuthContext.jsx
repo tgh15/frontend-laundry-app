@@ -40,7 +40,7 @@ export default class AuthContextProvider extends Component {
         //         title: 'Berhasil diedit'
         //     })
         // ) : console.log(credential.email)
-        return axiosReq.post('http://teguh-backend.herokuapp.com/api/v1/login', credential)
+        return axiosReq.post('https://teguh-backend.herokuapp.com/api/v1/login', credential)
             .then(response => {
                 const token = response.data.data.token
                 // console.log(response.data.data.token)
