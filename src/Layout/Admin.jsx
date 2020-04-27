@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import './Admin.css'
+import SideMenu from './SideMenu';
 
 export default class Admin extends Component {
     openNav() {
@@ -19,25 +19,19 @@ export default class Admin extends Component {
             <>
                 <nav id="my-nav" className="my-navbar fixed-top">
                     <span className="open-nav">
-                        <a href="#" onClick={this.openNav}>
+                        <button onClick={this.openNav}>
                             <svg width="30" height="30">
                                 <path d="M0,5 30,5" stroke="#fff" strokeWidth="5" />
                                 <path d="M0,14 30,14" stroke="#fff" strokeWidth="5" />
                                 <path d="M0,23 30,23" stroke="#fff" strokeWidth="5" />
                             </svg>
-                        </a>
+                        </button>
                     </span>
                     <div className="my-navbar-brand">
                         Admin
                 </div>
                 </nav>
-                <div id="side-menu" className="side-nav">
-                    <a href="#" className="btn-close" onClick={this.closeNav}>&times;</a>
-                    <Link to="/admin" className="link">Dashboard</Link>
-                    <Link to="/admin/profile" className="link">Profile</Link>
-                    <Link to="/admin/transaksi" className="link">Transaksi</Link>
-                    <Link to="/admin/paket" className="link">Paket</Link>
-                </div>
+                <SideMenu />
                 <div id="main">
                     {this.props.children}
                 </div>

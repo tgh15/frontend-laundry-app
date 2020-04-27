@@ -14,19 +14,21 @@ import NoMatch from './Pages/NoMatch'
 import Login from './Pages/Login/Login';
 import Transaksi from './Pages/Admin/Transaksi';
 import Paket from './Pages/Admin/Paket';
+import AuthContextProvider from './Context/AuthContext';
+import ProtectedRoute from './ProtectedRoute';
 
 function App() {
   return (
-    <Router>
-      <Switch>
-        <Route path="/" exact>
-          <h1>FrontPage</h1>
-        </Route>
-        <Route path="/login" component={Login} />
-        <Route
-          path="/admin"
-          render={({ match: { url } }) => (
-            <>
+    <AuthContextProvider>
+      <Router>
+        <Switch>
+          <Route path="/" exact>
+            <h1>FrontPage</h1>
+          </Route>
+          <Route path="/login" component={Login} />
+          <ProtectedRoute
+            path="/admin"
+            render={({ match: { url } }) => (
               <Admin>
                 <Route path={`${url}/`} component={Dashboard} exact />
                 <Route path={`${url}/profile`} component={Profile} />
@@ -34,12 +36,12 @@ function App() {
                 <Route path={`${url}/paket`} component={Paket} />
                 {/* <Route component={NoMatch} /> */}
               </Admin>
-            </>
-          )}
-        />
-        <Route component={NoMatch} />
-      </Switch>
-    </Router>
+            )}
+          />
+          <Route component={NoMatch} />
+        </Switch>
+      </Router>
+    </AuthContextProvider>
   );
 }
 export default App;
