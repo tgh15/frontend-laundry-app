@@ -14,33 +14,40 @@ import NoMatch from './Pages/NoMatch'
 import Login from './Pages/Login/Login';
 import Transaksi from './Pages/Admin/Transaksi';
 import Paket from './Pages/Admin/Paket';
-import AuthContextProvider from './Context/AuthContext';
 import ProtectedRoute from './ProtectedRoute';
+
+import Landing from "./Pages/Front/Landing";
+
+//Context
+import AuthContextProvider from './Context/AuthContext';
+import PaketContextProvider from './Context/PaketContext';
 
 function App() {
   return (
     <AuthContextProvider>
-      <Router>
-        <Switch>
-          <Route path="/" exact>
-            <h1>FrontPage</h1>
-          </Route>
-          <Route path="/login" component={Login} />
-          <ProtectedRoute
-            path="/admin"
-            render={({ match: { url } }) => (
-              <Admin>
-                <Route path={`${url}/`} component={Dashboard} exact />
-                <Route path={`${url}/profile`} component={Profile} />
-                <Route path={`${url}/transaksi`} component={Transaksi} />
-                <Route path={`${url}/paket`} component={Paket} />
-                {/* <Route component={NoMatch} /> */}
-              </Admin>
-            )}
-          />
-          <Route component={NoMatch} />
-        </Switch>
-      </Router>
+      <PaketContextProvider>
+        <Router>
+          <Switch>
+            <Route path="/" exact>
+              <Landing />
+            </Route>
+            <Route path="/login" component={Login} />
+            <ProtectedRoute
+              path="/admin"
+              render={({ match: { url } }) => (
+                <Admin>
+                  <Route path={`${url}/`} component={Dashboard} exact />
+                  <Route path={`${url}/profile`} component={Profile} />
+                  <Route path={`${url}/transaksi`} component={Transaksi} />
+                  <Route path={`${url}/paket`} component={Paket} />
+                  {/* <Route component={NoMatch} /> */}
+                </Admin>
+              )}
+            />
+            <Route component={NoMatch} />
+          </Switch>
+        </Router>
+      </PaketContextProvider>
     </AuthContextProvider>
   );
 }

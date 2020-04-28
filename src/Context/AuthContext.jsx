@@ -26,7 +26,6 @@ export default class AuthContextProvider extends Component {
     constructor() {
         super()
         this.state = {
-            users: [],
             user: localStorage.getItem('user') || {},
             token: localStorage.getItem("token") || "",
             isLoggedIn: (localStorage.getItem('token') === null) ? false : true
@@ -43,9 +42,9 @@ export default class AuthContextProvider extends Component {
         return axiosReq.post('https://teguh-backend.herokuapp.com/api/v1/login', credential)
             .then(response => {
                 const token = response.data.data.token
-                // console.log(response.data.data.token)
+                // console.log(response.data.data.user.name)
                 localStorage.setItem('token', token)
-                this.setState({ user: response.data.user })
+                this.setState({ user: response.data.data.user })
                 this.setState({
                     token,
                     isLoggedIn: true
