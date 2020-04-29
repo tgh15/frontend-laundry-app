@@ -1,12 +1,13 @@
 import React, { useContext, useState } from 'react'
 
 //Context
-import { PaketContext } from '../../Context/PaketContext'
+import { PaketContext } from '../../../Context/PaketContext'
+import PaketList from './PaketList'
 
 export default function Paket() {
-    const { paket, tambahPaket, hapusPaket } = useContext(PaketContext)
+    const { paket, tambahPaket } = useContext(PaketContext)
     const [add, setAdd] = useState(false)
-    const [input, setInput] = useState()
+    const [input, setInput] = useState({ paket: "", harga: "" })
 
     const handleChange = (e) => {
         setInput({ ...input, [e.target.name]: e.target.value })
@@ -14,9 +15,9 @@ export default function Paket() {
     }
 
     const handleSubmit = async () => {
-        tambahPaket(input)
-        await console.log(input)
-        await setAdd(false)
+        await tambahPaket(input)
+        setAdd(false)
+        setInput({ paket: "", harga: "" })
     }
 
     return (
@@ -28,7 +29,7 @@ export default function Paket() {
             </div>
             <div className="card mt-3">
                 <div className="card-body">
-                    <button type="button" className="btn btn-primary" onClick={() => { setAdd(!add) }}>Tambah Paket</button>
+                    {/* <button type="button" className="btn btn-primary" onClick={() => { setAdd(!add) }}>Tambah Paket</button> */}
                     <div className="table-responsive mt-3">
                         <table className="table">
                             <thead>
@@ -45,23 +46,18 @@ export default function Paket() {
                                         <th scope="row">{paket.length + 1}</th>
                                         <td><input type="text" name="paket" onChange={handleChange} /></td>
                                         <td><input type="text" name="harga" onChange={handleChange} /></td>
-                                        <td><button onClick={handleSubmit}>Tambahkan</button></td>
+                                        <td>
+                                            <button onClick={handleSubmit}>simpan</button>
+                                            <button onClick={() => { setAdd(!add) }}>batal</button>
+                                        </td>
                                     </tr>
-                                ) : (null)}
-                                {paket.length > 0 ? (
-                                    paket.map((el, key) => (
-                                        <tr key={key}>
-                                            <th scope="row">{key + 1}</th>
-                                            <td>{el.paket}</td>
-                                            <td>{el.harga}</td>
-                                            <td>
-                                                <button onClick={() => hapusPaket(el.id)}>delete</button>
-                                            </td>
-                                        </tr>
-                                    ))
-                                ) : (
-                                        add ? (null) : (<tr><td colSpan="4">Kosong</td></tr>)
+                                ) : (<tr>
+                                    <td colSpan="4">
+                                        <button type="button" onClick={() => { setAdd(!add) }}>Tambah Paket</button>
+                                    </td>
+                                </tr>
                                     )}
+                                <PaketList add={add} />
                             </tbody>
                         </table>
                     </div>

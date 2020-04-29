@@ -1,7 +1,7 @@
 import React from 'react'
 
 //Component
-import AccordionList from '../../Components/AccordionList/AccordionList'
+import AccordionList from '../../../Components/AccordionList/AccordionList'
 
 export default function Transaksi() {
     return (

@@ -12,8 +12,8 @@ import Dashboard from './Pages/Admin/Dashboard'
 import Profile from './Pages/Admin/Profile';
 import NoMatch from './Pages/NoMatch'
 import Login from './Pages/Login/Login';
-import Transaksi from './Pages/Admin/Transaksi';
-import Paket from './Pages/Admin/Paket';
+import Transaksi from './Pages/Admin/TransaksiComponent/Transaksi';
+import Paket from './Pages/Admin/PaketComponent/Paket';
 import ProtectedRoute from './ProtectedRoute';
 
 import Landing from "./Pages/Front/Landing";

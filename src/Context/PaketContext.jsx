@@ -30,19 +30,22 @@ const PaketContextProvider = (props) => {
     useEffect(() => {
         const getPaket = async () => {
             const result = await axiosReq.get(url)
-
             const resultData = result.data.data
-            console.log(resultData)
             setPaket(...paket, resultData)
         }
         getPaket()
     }, [])
 
     const tambahPaket = (props) => {
+        if (props === undefined || (props.paket === "" || props.harga === "")) {
+            return Toast.fire({
+                icon: 'warning',
+                title: 'input tidak boleh kosong'
+            })
+        }
         return axiosReq.post(url, props)
             .then(response => {
                 const resultData = response.data.paket
-                console.log(resultData)
                 setPaket([...paket, resultData])
                 Toast.fire({
                     icon: 'success',
@@ -84,8 +87,33 @@ const PaketContextProvider = (props) => {
         })
     }
 
+    const editPaket = (id, data) => {
+        return axiosReq.put(url + "/" + id, data)
+            .then(response => {
+                const edited = response.data.data
+                let paketListCopy = paket.map(el => {
+                    if (el.id === id) {
+                        el.paket = edited.paket
+                        el.harga = edited.harga
+                    }
+                    return el
+                })
+                setPaket(paket => paket = paketListCopy)
+                Toast.fire({
+                    icon: 'success',
+                    title: 'Berhasil diupdate'
+                })
+            })
+            .catch(err => {
+                Toast.fire({
+                    icon: 'error',
+                    title: 'Gagal diupdate'
+                })
+            })
+    }
+
     return (
-        <PaketContext.Provider value={{ paket, tambahPaket, hapusPaket }}>
+        <PaketContext.Provider value={{ paket, tambahPaket, hapusPaket, editPaket }}>
             {props.children}
         </PaketContext.Provider>
     )
