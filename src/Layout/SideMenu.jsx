@@ -15,6 +15,7 @@ export default function SideMenu() {
             <Link to="/admin" className="link">Dashboard</Link>
             <Link to="/admin/profile" className="link">Profile</Link>
             <Link to="/admin/transaksi" className="link">Transaksi</Link>
+            <Link to="/admin/transaksi/tambah" className="link">Tambah Transaksi</Link>
             <Link to="/admin/paket" className="link">Paket</Link>
             <button onClick={logout} className="link">Keluar</button>
         </div>

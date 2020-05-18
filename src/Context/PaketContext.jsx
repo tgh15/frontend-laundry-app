@@ -45,7 +45,7 @@ const PaketContextProvider = (props) => {
         }
         return axiosReq.post(url, props)
             .then(response => {
-                const resultData = response.data.paket
+                const resultData = response.data.data
                 setPaket([...paket, resultData])
                 Toast.fire({
                     icon: 'success',
