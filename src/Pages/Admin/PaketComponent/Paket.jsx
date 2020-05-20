@@ -1,8 +1,13 @@
 import React, { useContext, useState } from 'react'
 
+//FontAwesome
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlusCircle, faSave, faTimesCircle } from '@fortawesome/free-solid-svg-icons'
+
 //Context
 import { PaketContext } from '../../../Context/PaketContext'
 import PaketList from './PaketList'
+import ButtonDanger from '../../../Components/Button/ButtonDanger'
 
 export default function Paket() {
     const { paket, tambahPaket } = useContext(PaketContext)
@@ -42,18 +47,22 @@ export default function Paket() {
                             </thead>
                             <tbody>
                                 {add ? (
-                                    <tr>
+                                    <tr className="table-info">
                                         <th scope="row">{paket.length + 1}</th>
-                                        <td><input type="text" name="paket" onChange={handleChange} /></td>
-                                        <td><input type="text" name="harga" onChange={handleChange} /></td>
+                                        <td><input className='form-control form-control-sm' type="text" name="paket" onChange={handleChange} /></td>
+                                        <td><input className='form-control form-control-sm' type="text" name="harga" onChange={handleChange} /></td>
                                         <td>
-                                            <button onClick={handleSubmit}>simpan</button>
-                                            <button onClick={() => { setAdd(!add) }}>batal</button>
+                                            <button className="btn btn-primary btn-sm mr-2" onClick={handleSubmit}>
+                                                <FontAwesomeIcon icon={faSave} />
+                                            </button>
+                                            <button className="btn btn-danger btn-sm" onClick={() => { setAdd(!add) }}>
+                                                <FontAwesomeIcon icon={faTimesCircle} />
+                                            </button>
                                         </td>
                                     </tr>
                                 ) : (<tr>
-                                    <td colSpan="4">
-                                        <button type="button" onClick={() => { setAdd(!add) }}>Tambah Paket</button>
+                                    <td colSpan="4" style={{ cursor: "pointer" }} className="text-center table-info" onClick={() => { setAdd(!add) }}>
+                                        Tambah Paket
                                     </td>
                                 </tr>
                                     )}
@@ -63,6 +72,6 @@ export default function Paket() {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }

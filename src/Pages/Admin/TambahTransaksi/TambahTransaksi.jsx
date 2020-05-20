@@ -34,9 +34,10 @@ export default function TambahTransaksi() {
         kiloan: 1
     }])
     const [totalBayar, settotalBayar] = useState(0)
+    var currentTime = new Date()
     const [identitas, setIdentitas] = useState(
         {
-            kode_transaksi: Math.floor(Math.random() * 100) + Date.now(),
+            kode_transaksi: 'Trx-' + currentTime.getDate() + (currentTime.getMonth() + 1) + currentTime.getFullYear() + '-' + Math.floor(Math.random() * 100),
             nama_pelanggan: '',
             no_hp: '',
             alamat: '',
@@ -79,7 +80,7 @@ export default function TambahTransaksi() {
         }
         if (['paket', 'kuantitas'].includes(e.target.name)) {
             var jumlah = items[e.target.dataset.id]['harga_paket'] * items[e.target.dataset.id]['kuantitas']
-            console.log(jumlah)
+            // console.log(jumlah)
             var test = JSON.parse(JSON.stringify(items))
             test[e.target.dataset.id].harga = jumlah
             setItems(test)

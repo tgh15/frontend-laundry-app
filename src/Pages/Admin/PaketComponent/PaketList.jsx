@@ -18,7 +18,7 @@ export default function PaketList(props) {
 
             ))
         ) : (
-                props.add ? (null) : (<tr><td colSpan="4">Kosong</td></tr>)
+                props.add ? (null) : (<tr colSpan="4" className="text-center"><td colSpan="4">Kosong</td></tr>)
             )
     )
 }
