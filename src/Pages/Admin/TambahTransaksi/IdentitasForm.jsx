@@ -18,7 +18,7 @@ export default function IdentitasForm(props) {
 
             <dt className="col-sm-3">Status Pembayaran</dt>
             <dd className="col-sm-9">
-                <select name="status_transaksi" className="custom-select custom-select-sm" onChange={props.change}>
+                <select name="status_pembayaran" className="custom-select custom-select-sm" onChange={props.change}>
                     <option value='null' defaultValue>Belum Lunas</option>
                     <option value="1">Lunas</option>
                 </select>

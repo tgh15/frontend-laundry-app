@@ -40,8 +40,20 @@ const TransaksiContextProvider = (props) => {
             })
     }
 
+    const addTransaksi = (data) => {
+        return axiosReq.post(url, data)
+            .then(response => {
+                console.log(response)
+                Toast.fire({
+                    icon: 'success',
+                    title: 'Transaksi Berhasil'
+                })
+            })
+            .catch(err => console.error(err.data))
+    }
+
     return (
-        <TransaksiContext.Provider value={{ transaksi }}>
+        <TransaksiContext.Provider value={{ transaksi, addTransaksi }}>
             {props.children}
         </TransaksiContext.Provider>
     )

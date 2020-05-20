@@ -8,7 +8,7 @@ export default function TransaksiDetail(props) {
                 <div className="card-header" id="headingOne">
                     <div className="mb-0 d-flex justify-content-between align-items-center" data-toggle="collapse" data-target={`#collapse${props.id}`}>
                         <h5>{props.el.kode_transaksi}</h5>
-                        <h5>{props.el.status_pengerjaan ? "Selesai" : "Proses"}</h5>
+                        <h5>{props.el.status_pengerjaan ? "Proses" : "Selesai"}</h5>
                     </div>
                 </div>
 

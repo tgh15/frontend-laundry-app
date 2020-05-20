@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 
 //Component
-import AccordionList from '../../../Components/AccordionList/AccordionList'
 import TransaksiItem from './TransaksiItem'
 
 //Context

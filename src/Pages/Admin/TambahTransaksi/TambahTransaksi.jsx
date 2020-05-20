@@ -5,8 +5,12 @@ import Swal from "sweetalert2"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlusCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons'
 
-import { PaketContext } from '../../../Context/PaketContext'
+//Component
 import IdentitasForm from './IdentitasForm'
+
+//Context
+import { PaketContext } from '../../../Context/PaketContext'
+import { TransaksiContext } from '../../../Context/TransaksiContext'
 
 export default function TambahTransaksi() {
     const Toast = Swal.mixin({
@@ -20,12 +24,14 @@ export default function TambahTransaksi() {
         }
     })
     const { paket } = useContext(PaketContext)
+    const { addTransaksi } = useContext(TransaksiContext)
     const [items, setItems] = useState([{
         index: Math.random(),
         kuantitas: '',
         paket: '',
         harga_paket: 0,
-        harga: 0
+        harga: 0,
+        kiloan: 1
     }])
     const [totalBayar, settotalBayar] = useState(0)
     const [identitas, setIdentitas] = useState(
@@ -34,8 +40,8 @@ export default function TambahTransaksi() {
             nama_pelanggan: '',
             no_hp: '',
             alamat: '',
-            status_transaksi: 0,
-            harga_total: 0
+            status_pembayaran: 0,
+            status_pengerjaan: 0
         }
     )
     const addRow = () => {
@@ -45,7 +51,8 @@ export default function TambahTransaksi() {
             kuantitas: '',
             paket: '',
             harga_paket: 0,
-            harga: 0
+            harga: 0,
+            kiloan: 1
         }
         ]))
     }
@@ -55,7 +62,7 @@ export default function TambahTransaksi() {
         )
     }
     const handleChange = (e) => {
-        if (['nama_pelanggan', 'no_hp', 'alamat', 'status_transaksi'].includes(e.target.name)) {
+        if (['nama_pelanggan', 'no_hp', 'alamat', 'status_pembayaran'].includes(e.target.name)) {
             setIdentitas({ ...identitas, [e.target.name]: e.target.value })
         }
         if (e.target.name === 'paket') {
@@ -81,6 +88,8 @@ export default function TambahTransaksi() {
             return total + item.harga
         }, 0))
     }
+
+    //melakuakan perhutungan harga total
     const hargaTotal = () => {
         return items.reduce((total, item) => {
             var harga_total = total + item.harga
@@ -89,8 +98,9 @@ export default function TambahTransaksi() {
         // settotalBayar(harga_total)
     }
     const handleSubmit = (e) => {
-        e.preventDefault()
-        console.log("ok!")
+        e.preventDefault() // Menghentikan perilaku default tombol submit
+        // console.log("ok!")
+        //Memeriksa field identitas
         if (identitas.nama_pelanggan === '' || identitas.no_hp === '' || identitas.alamat === '') {
             Toast.fire({
                 icon: 'warning',
@@ -98,6 +108,7 @@ export default function TambahTransaksi() {
             })
             return false
         }
+        //Memerikasi field transaksi lisk
         for (let i = 0; i < items.length; i++) {
             if (items[i].kuantitas === '' || items[i].paket === '') {
                 Toast.fire({
@@ -107,8 +118,9 @@ export default function TambahTransaksi() {
                 return false
             }
         }
-        let data = Object.assign(identitas, { transaksilist: items, total_bayar: totalBayar })
-        console.log(data)
+        let data = Object.assign(identitas, { transaksilist: items, total_bayar: totalBayar }) //Menyusun objek dari state
+        // console.log(data)
+        addTransaksi(data) //Melakukan request post ke API
     }
 
     return (
