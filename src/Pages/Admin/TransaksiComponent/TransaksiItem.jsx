@@ -7,9 +7,9 @@ import TransaksiDetail from './TransaksiDetail'
 import { TransaksiContext } from '../../../Context/TransaksiContext'
 
 export default function TransaksiItem() {
-    const { transaksi } = useContext(TransaksiContext)
+    const { transaksi, searchResult } = useContext(TransaksiContext)
     return (
-        transaksi.map((el, key) => (
+        searchResult.map((el, key) => (
             <TransaksiDetail el={el} key={key} index={key} id={`collapse-${key}`} />
         ))
     )

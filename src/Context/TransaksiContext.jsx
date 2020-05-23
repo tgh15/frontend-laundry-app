@@ -26,6 +26,7 @@ export const TransaksiContext = createContext()
 
 const TransaksiContextProvider = (props) => {
     const [transaksi, setTransaksi] = useState([])
+    const [searchKey, setSearchKey] = useState("")
 
     useEffect(() => {
         getTransaksi()
@@ -43,7 +44,9 @@ const TransaksiContextProvider = (props) => {
     const addTransaksi = (data) => {
         return axiosReq.post(url, data)
             .then(response => {
-                console.log(response)
+                // console.log(response.data.data)
+                var result = response.data.data
+                setTransaksi([...transaksi, result])
                 Toast.fire({
                     icon: 'success',
                     title: 'Transaksi Berhasil'
@@ -52,8 +55,16 @@ const TransaksiContextProvider = (props) => {
             .catch(err => console.error(err.data))
     }
 
+    const searchTransaksi = (data) => {
+        var lowercasedFilter = data.toLowerCase()
+        setSearchKey(lowercasedFilter)
+    }
+    const searchResult = transaksi.filter(item => {
+        return Object.keys(item).some(key => item[key].toString().toLowerCase().includes(searchKey))
+    })
+
     return (
-        <TransaksiContext.Provider value={{ transaksi, addTransaksi }}>
+        <TransaksiContext.Provider value={{ transaksi, addTransaksi, searchTransaksi, searchResult }}>
             {props.children}
         </TransaksiContext.Provider>
     )

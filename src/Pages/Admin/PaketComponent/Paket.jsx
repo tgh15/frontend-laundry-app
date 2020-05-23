@@ -2,17 +2,17 @@ import React, { useContext, useState } from 'react'
 
 //FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlusCircle, faSave, faTimesCircle } from '@fortawesome/free-solid-svg-icons'
+import { faSave, faTimesCircle } from '@fortawesome/free-solid-svg-icons'
 
 //Context
 import { PaketContext } from '../../../Context/PaketContext'
 import PaketList from './PaketList'
-import ButtonDanger from '../../../Components/Button/ButtonDanger'
 
 export default function Paket() {
     const { paket, tambahPaket } = useContext(PaketContext)
     const [add, setAdd] = useState(false)
     const [input, setInput] = useState({ paket: "", harga: "" })
+
 
     const handleChange = (e) => {
         setInput({ ...input, [e.target.name]: e.target.value })
@@ -50,7 +50,7 @@ export default function Paket() {
                                     <tr className="table-info">
                                         <th scope="row">{paket.length + 1}</th>
                                         <td><input className='form-control form-control-sm' type="text" name="paket" onChange={handleChange} /></td>
-                                        <td><input className='form-control form-control-sm' type="text" name="harga" onChange={handleChange} /></td>
+                                        <td><input className='form-control form-control-sm' type="number" name="harga" onChange={handleChange} /></td>
                                         <td>
                                             <button className="btn btn-primary btn-sm mr-2" onClick={handleSubmit}>
                                                 <FontAwesomeIcon icon={faSave} />
@@ -73,5 +73,6 @@ export default function Paket() {
                 </div>
             </div>
         </div >
+
     )
 }

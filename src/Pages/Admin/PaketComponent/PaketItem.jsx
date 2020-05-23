@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 //FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlusCircle, faSave, faTimesCircle, faTrash, faEdit } from '@fortawesome/free-solid-svg-icons'
+import { faSave, faTimesCircle, faTrash, faEdit } from '@fortawesome/free-solid-svg-icons'
 
 //Context
 import { PaketContext } from '../../../Context/PaketContext'

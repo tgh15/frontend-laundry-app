@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 
 //Component
 import TransaksiItem from './TransaksiItem'
@@ -8,23 +8,29 @@ import { TransaksiContext } from '../../../Context/TransaksiContext'
 
 
 export default function Transaksi() {
-    const { transaksi } = useContext(TransaksiContext)
+    const { transaksi, searchTransaksi, searchResult } = useContext(TransaksiContext)
     useEffect(() => {
         console.log(transaksi)
     }, [])
+    const handleChange = (e) => {
+        searchTransaksi(e.target.value)
+    }
     return (
         <div className="container">
             <div className="card mb-3">
                 <div className="card-body">
                     <h3>Transaksi</h3>
-                    <div className="col-md-8 offset-md-2">
-                        <input className="form-control" placeholder="cari transaksi" type="text" />
+                    <div className="col-md-8 offset-md-2 input-group">
+                        <input className="form-control" placeholder="cari transaksi" type="text" onInput={handleChange} onChange={handleChange} />
+                        <div className="input-group-append">
+                            <span className="input-group-text">{searchResult.length} Hasil</span>
+                        </div>
                     </div>
                 </div>
             </div>
             <div className="card">
                 <div className="card-body card-wrapper">
-                    {transaksi.length > 0 ? (
+                    {searchResult.length > 0 ? (
                         <TransaksiItem />
                     ) : (
                             <h1>Kosong</h1>

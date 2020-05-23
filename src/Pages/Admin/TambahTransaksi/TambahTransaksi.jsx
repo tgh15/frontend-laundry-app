@@ -42,7 +42,7 @@ export default function TambahTransaksi() {
             no_hp: '',
             alamat: '',
             status_pembayaran: 0,
-            status_pengerjaan: 0
+            status_pengerjaan: 1
         }
     )
     const addRow = () => {

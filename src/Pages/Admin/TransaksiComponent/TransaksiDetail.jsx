@@ -8,7 +8,7 @@ export default function TransaksiDetail(props) {
                 <div className="card-header" id="headingOne">
                     <div className="mb-0 d-flex justify-content-between align-items-center" data-toggle="collapse" data-target={`#collapse${props.id}`}>
                         <h5>{props.el.kode_transaksi}</h5>
-                        <h5>{props.el.status_pengerjaan ? "Proses" : "Selesai"}</h5>
+                        <h5 className={props.el.status_pengerjaan ? "text-danger" : "text-success"}>{props.el.status_pengerjaan ? "Proses" : "Selesai"}</h5>
                     </div>
                 </div>
 
@@ -31,7 +31,7 @@ export default function TransaksiDetail(props) {
                             <dd className="col-sm-9">{props.el.alamat}</dd>
 
                             <dt className="col-sm-3">Status Pembayaran</dt>
-                            <dd className="col-sm-9">{props.el.status_pembayaran ? "Lunas" : "Belum Lunas"}</dd>
+                            <dd className={`col-sm-9 ${props.el.status_pembayaran ? "text-success" : "text-danger"}`}>{props.el.status_pembayaran ? "Lunas" : "Belum Lunas"}</dd>
                         </dl>
                         <hr />
                         <h4>Rincian Transaksi</h4>
