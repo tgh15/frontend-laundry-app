@@ -1,9 +1,10 @@
 .lds-spinner {
     color: official;
     display: inline-block;
-    position: relative;
+    position: inherit;
     width: 80px;
     height: 80px;
+    margin: 20px;
 }
 
 .lds-spinner div {

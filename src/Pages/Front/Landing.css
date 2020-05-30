@@ -1,7 +1,21 @@
-.landing-wrap {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.landing-wrap .row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.landing-wrap .col-md-4,
+.col-sm-6,
+.col-md-8,
+.col-md-6 {
+    position: inherit;
+    /* width: 100%;
+    height: 250px; */
+    /* background-color: crimson; */
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+.landing-wrap ul {
+    margin-block-start: 0 !important;
+    padding-inline-start: 0 !important;
 }
