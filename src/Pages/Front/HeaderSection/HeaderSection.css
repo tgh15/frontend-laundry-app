@@ -1,0 +1,178 @@
+nav#front-nav {
+    justify-content: space-around;
+    /* height: 80px; */
+    padding: 1rem;
+    /* padding-bottom: 1rem; */
+    display: flex;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    transition: ease-in .5s;
+    z-index: 99;
+}
+
+:target {
+    padding-top: 90px !important;
+    margin-top: -60px !important;
+}
+
+nav#front-nav.navBar {
+    background-color: transparent;
+    color: white;
+}
+
+nav#front-nav.navBar-scrolled {
+    background-color: black;
+    color: white;
+    border-bottom: 3px solid yellow;
+}
+
+nav#front-nav .logo {
+    margin-top: 0;
+    font-size: 24px;
+}
+
+nav#front-nav .menu {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0 !important;
+    /* width: 20%; */
+    list-style: none;
+}
+
+nav#front-nav .navToggle {
+    display: none;
+    flex-direction: column;
+    height: 20px;
+    justify-content: space-between;
+    position: relative;
+}
+
+nav#front-nav .navToggle input {
+    position: absolute;
+    top: -3px;
+    left: -5px;
+    width: 29px;
+    height: 29px;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 2 !important;
+}
+
+nav#front-nav .navToggle span {
+    display: block;
+    width: 28px;
+    height: 3px;
+    background-color: white;
+    border-radius: 3px;
+    transition: .5s;
+}
+
+nav#front-nav .navToggle span:nth-child(2) {
+    transform-origin: 0 0;
+}
+
+nav#front-nav .navToggle span:nth-child(4) {
+    transform-origin: 0 100%;
+}
+
+nav#front-nav .navToggle input:checked~span:nth-child(2) {
+    transform: rotate(45deg) translate(-1px, -1px);
+}
+
+nav#front-nav .navToggle input:checked~span:nth-child(3) {
+    opacity: 0;
+    transform: scale(0);
+}
+
+nav#front-nav .navToggle input:checked~span:nth-child(4) {
+    transform: rotate(-45deg) translate(-1px, 0);
+}
+
+
+nav#front-nav .menu a {
+    padding: 10px;
+}
+
+nav#front-nav .menu a:hover {
+    color: rgb(239, 255, 22);
+}
+
+section#header {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://cdn.pixabay.com/photo/2015/01/29/09/38/clothes-line-615962_960_720.jpg');
+    background-size: cover;
+    display: flex;
+    align-items: center;
+}
+
+section#header .heading {
+    width: 60%;
+    margin-left: 2rem;
+    color: white;
+    line-height: 40px;
+}
+
+section#header .heading .button {
+    text-decoration: none;
+    background-color: rgb(239, 255, 22);
+    border-radius: .5rem;
+    padding: 10px;
+    width: 100%;
+    color: black;
+}
+
+section#header .heading .button:hover {
+    background-color: white;
+}
+
+/* ------------------------Media Breakpoint---------------------------- */
+
+@media screen and (max-width: 576px) {
+    nav#front-nav {
+        justify-content: space-between;
+    }
+
+    nav#front-nav .navToggle {
+        display: flex;
+    }
+
+    nav#front-nav .menu {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        align-items: center;
+        justify-content: space-evenly;
+        flex-direction: column;
+        background-color: black;
+        z-index: -1;
+        width: 100%;
+        transform: translateY(-100%);
+        transition: all 1s;
+        opacity: 0;
+    }
+
+    nav#front-nav .menu.slide {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    nav#front-nav .menu.slide .menu-item {
+        font-size: 24px;
+    }
+
+    section#header {
+        justify-content: center;
+
+    }
+
+    section#header .heading {
+        margin-left: 0;
+        width: 80%;
+        text-align: center;
+    }
+}

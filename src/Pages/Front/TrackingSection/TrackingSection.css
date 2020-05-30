@@ -1,0 +1,30 @@
+section#tracking {
+    /* height: 50vh; */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 30px;
+    background-color: white;
+}
+
+section#tracking .input-group {
+    position: inherit;
+    width: 60%;
+}
+
+section#tracking button {
+    position: inherit;
+    z-index: unset;
+}
+
+section#tracking input {
+    position: inherit;
+    z-index: unset;
+}
+
+@media screen and (max-width: 576px) {
+    section#tracking .input-group {
+        width: 100%;
+    }
+}

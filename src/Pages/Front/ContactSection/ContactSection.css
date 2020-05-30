@@ -1,0 +1,24 @@
+section#contact {
+    /* height: 100vh; */
+    width: 100%;
+    padding: 30px;
+}
+
+section#contact ul {
+    list-style: none;
+}
+
+section#contact ul li {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+section#contact ul li span {
+    font-weight: bold;
+}
+
+section#contact iframe {
+    width: 100%;
+    height: 100%;
+}

@@ -1,0 +1,19 @@
+section#about {
+    width: 100%;
+    min-height: 50vh;
+    background-color: white;
+    padding: 30px;
+}
+
+section#about p {
+    padding-left: 70px;
+    padding-right: 70px;
+}
+
+
+@media screen and (max-width: 576px) {
+    section#about p {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
