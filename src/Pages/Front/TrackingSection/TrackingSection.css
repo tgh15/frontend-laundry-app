@@ -23,6 +23,12 @@ section#tracking input {
     z-index: unset;
 }
 
+
+section#tracking p {
+    margin-top: 1rem;
+    color: red;
+}
+
 @media screen and (max-width: 576px) {
     section#tracking .input-group {
         width: 100%;

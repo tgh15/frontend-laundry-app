@@ -33,11 +33,10 @@ export default function TambahTransaksi() {
         harga: 0,
         kiloan: 1
     }])
-    const [totalBayar, settotalBayar] = useState(0)
     var currentTime = new Date()
     const [identitas, setIdentitas] = useState(
         {
-            kode_transaksi: 'Trx-' + currentTime.getDate() + (currentTime.getMonth() + 1) + currentTime.getFullYear() + '-' + Math.floor(Math.random() * 100),
+            kode_transaksi: 'Trx-' + currentTime.getTime().toString(36) + '-' + Math.floor(Math.random() * 100),
             nama_pelanggan: '',
             no_hp: '',
             alamat: '',
@@ -85,9 +84,6 @@ export default function TambahTransaksi() {
             test[e.target.dataset.id].harga = jumlah
             setItems(test)
         }
-        settotalBayar(items.reduce((total, item) => {
-            return total + item.harga
-        }, 0))
     }
 
     //melakuakan perhutungan harga total
@@ -119,7 +115,7 @@ export default function TambahTransaksi() {
                 return false
             }
         }
-        let data = Object.assign(identitas, { transaksilist: items, total_bayar: totalBayar }) //Menyusun objek dari state
+        let data = Object.assign(identitas, { transaksilist: items, total_bayar: hargaTotal() }) //Menyusun objek dari state
         // console.log(data)
         addTransaksi(data) //Melakukan request post ke API
     }

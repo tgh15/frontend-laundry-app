@@ -1,0 +1,51 @@
+.tracking-result {
+    display: flex;
+    width: 60%;
+    margin-top: 10px;
+    transition: all 2s;
+    background-color: #f1f3f6;
+    box-shadow: -3px -3px 7px #ffffffb2, 3px 3px 5px rgba(94, 104, 121, 0.3);
+    padding: 15px;
+    flex-direction: column;
+}
+
+
+.tracking-result ul {
+    list-style: none;
+    width: 100%;
+}
+
+.tracking-result li:first-child {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.tracking-result li:first-child span {
+    padding: 0 5px 0 5px;
+}
+
+.tracking-result .proses {
+    background-color: yellow;
+}
+
+.tracking-result .selesai {
+    background-color: green;
+    color: white;
+}
+
+.tracking-result .belum-lunas {
+    background-color: red;
+    color: white;
+}
+
+.tracking-result .lunas {
+    background-color: green;
+    color: white;
+}
+
+@media screen and (max-width: 576px) {
+    .tracking-result {
+        width: 100%;
+    }
+}

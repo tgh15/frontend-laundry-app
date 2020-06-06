@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from 'react'
+import React, { createContext, useState } from 'react'
 import axios from 'axios'
 import Swal from "sweetalert2"
 
@@ -27,10 +27,12 @@ export const TransaksiContext = createContext()
 const TransaksiContextProvider = (props) => {
     const [transaksi, setTransaksi] = useState([])
     const [searchKey, setSearchKey] = useState("")
+    const [isLoading, setIsLoading] = useState(false)
+    const [queryFrontResult, setQueryFrontResult] = useState([])
 
-    useEffect(() => {
-        getTransaksi()
-    }, [])
+    // useEffect(() => {
+    //     getTransaksi()
+    // }, [])
 
     const getTransaksi = () => {
         return axiosReq.get(url)
@@ -63,8 +65,33 @@ const TransaksiContextProvider = (props) => {
         return Object.keys(item).some(key => item[key].toString().toLowerCase().includes(searchKey))
     })
 
+    const frontQuery = (query) => {
+        return axiosReq.get(url + "/" + query)
+            .then(response => {
+                let result = response.data.data
+                setIsLoading(false)
+                setQueryFrontResult([result])
+                console.log(result)
+            }).catch(err => {
+                setIsLoading(false)
+                setQueryFrontResult([{ message: 'data tidak ditemukan' }])
+            })
+
+    }
+
     return (
-        <TransaksiContext.Provider value={{ transaksi, addTransaksi, searchTransaksi, searchResult }}>
+        <TransaksiContext.Provider
+            value={{
+                queryFrontResult,
+                setQueryFrontResult,
+                isLoading,
+                setIsLoading,
+                getTransaksi,
+                addTransaksi,
+                searchTransaksi,
+                searchResult,
+                frontQuery
+            }}>
             {props.children}
         </TransaksiContext.Provider>
     )

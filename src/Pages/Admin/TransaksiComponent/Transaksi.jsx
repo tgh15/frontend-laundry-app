@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 
 //Component
 import TransaksiItem from './TransaksiItem'
@@ -8,10 +8,11 @@ import { TransaksiContext } from '../../../Context/TransaksiContext'
 
 
 export default function Transaksi() {
-    const { transaksi, searchTransaksi, searchResult } = useContext(TransaksiContext)
+    const { getTransaksi, searchTransaksi, searchResult } = useContext(TransaksiContext)
     useEffect(() => {
-        console.log(transaksi)
-    }, [])
+        getTransaksi()
+        // console.log(transaksi)
+    }, [getTransaksi])
     const handleChange = (e) => {
         searchTransaksi(e.target.value)
     }
