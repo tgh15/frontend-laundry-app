@@ -121,7 +121,7 @@ export default function TambahTransaksi() {
     }
 
     return (
-        <div className="container">
+        <>
             <div className="card mb-3">
                 <div className="card-body">
                     <h3>Tambah Transaksi</h3>
@@ -187,6 +187,6 @@ export default function TambahTransaksi() {
                     </div>
                 </form>
             </div>
-        </div>
+        </>
     )
 }

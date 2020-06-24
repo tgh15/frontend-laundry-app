@@ -15,6 +15,8 @@ import Login from './Pages/Login/Login';
 import Transaksi from './Pages/Admin/TransaksiComponent/Transaksi';
 import Paket from './Pages/Admin/PaketComponent/Paket';
 import ProtectedRoute from './ProtectedRoute';
+import Laporan from './Pages/Admin/Laporan/Laporan';
+import TambahTransaksi from './Pages/Admin/TambahTransaksi/TambahTransaksi';
 
 import Landing from "./Pages/Front/Landing";
 
@@ -22,37 +24,40 @@ import Landing from "./Pages/Front/Landing";
 import AuthContextProvider from './Context/AuthContext';
 import PaketContextProvider from './Context/PaketContext';
 import TransaksiContextProvider from './Context/TransaksiContext';
-import TambahTransaksi from './Pages/Admin/TambahTransaksi/TambahTransaksi';
+import KategoriContextProvider from './Context/KategoriContext';
 
 function App() {
   return (
     <AuthContextProvider>
-      <PaketContextProvider>
-        <TransaksiContextProvider>
-          <Router>
-            <Switch>
-              <Route path="/" exact>
-                <Landing />
-              </Route>
-              <Route path="/login" component={Login} />
-              <ProtectedRoute
-                path="/admin"
-                render={({ match: { url } }) => (
-                  <Admin>
-                    <Route path={`${url}/`} component={Dashboard} exact />
-                    <Route path={`${url}/profile`} component={Profile} />
-                    <Route path={`${url}/transaksi`} component={Transaksi} exact />
-                    <Route path={`${url}/transaksi/Tambah`} component={TambahTransaksi} />
-                    <Route path={`${url}/paket`} component={Paket} />
-                    {/* <Route component={NoMatch} /> */}
-                  </Admin>
-                )}
-              />
-              <Route component={NoMatch} />
-            </Switch>
-          </Router>
-        </TransaksiContextProvider>
-      </PaketContextProvider>
+      <KategoriContextProvider>
+        <PaketContextProvider>
+          <TransaksiContextProvider>
+            <Router>
+              <Switch>
+                <Route path="/" exact>
+                  <Landing />
+                </Route>
+                <Route path="/login" component={Login} />
+                <ProtectedRoute
+                  path="/admin"
+                  render={({ match: { url } }) => (
+                    <Admin>
+                      <Route path={`${url}/`} component={Dashboard} exact />
+                      <Route path={`${url}/profile`} component={Profile} />
+                      <Route path={`${url}/transaksi`} component={Transaksi} exact />
+                      <Route path={`${url}/transaksi/Tambah`} component={TambahTransaksi} />
+                      <Route path={`${url}/paket`} component={Paket} />
+                      <Route path={`${url}/laporan`} component={Laporan} />
+                      {/* <Route component={NoMatch} /> */}
+                    </Admin>
+                  )}
+                />
+                <Route component={NoMatch} />
+              </Switch>
+            </Router>
+          </TransaksiContextProvider>
+        </PaketContextProvider>
+      </KategoriContextProvider>
     </AuthContextProvider>
   );
 }

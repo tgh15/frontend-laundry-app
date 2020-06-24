@@ -1,25 +1,21 @@
 import React from 'react'
 
-//FontAwesome
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFlag } from '@fortawesome/free-solid-svg-icons'
-
-//CSS
-import './InfoBox.css'
 
 export default function InfoBox(props) {
     return (
-        <div className="info-box">
-            <span className="info-box-icon bg-info text-white">
-                <FontAwesomeIcon icon={faFlag} />
-            </span>
-            <div className="info-box-content ">
-                <span className="info-box-text">
-                    {props.text}
-                </span>
-                <span className="info-box-number">
-                    {props.number}
-                </span>
+        <div className="col-xl-3 col-md-6 mb-4">
+            <div className={`card border-left-${props.color} shadow h-100 py-2`}>
+                <div className="card-body">
+                    <div className="row no-gutters align-items-center">
+                        <div className="col mr-2">
+                            <div className={`text-xs font-weight-bold text-${props.color} text-uppercase mb-1`}>{props.title}</div>
+                            <div className="h5 mb-0 font-weight-bold text-gray-800">{props.value}</div>
+                        </div>
+                        <div className="col-auto">
+                            <i className="fas fa-calendar fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     )

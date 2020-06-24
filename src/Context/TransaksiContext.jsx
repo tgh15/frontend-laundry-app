@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useState, useEffect } from 'react'
 import axios from 'axios'
 import Swal from "sweetalert2"
 
@@ -30,18 +30,20 @@ const TransaksiContextProvider = (props) => {
     const [isLoading, setIsLoading] = useState(false)
     const [queryFrontResult, setQueryFrontResult] = useState([])
 
-    // useEffect(() => {
-    //     getTransaksi()
-    // }, [])
+    useEffect(() => {
+        const getTransaksi = async () => {
+            return await axiosReq.get(url)
+                .then(response => {
+                    let result = response.data.data
+                    setTransaksi(result)
+                    // console.log(result)
+                })
+        }
+        getTransaksi()
 
-    const getTransaksi = () => {
-        return axiosReq.get(url)
-            .then(response => {
-                let result = response.data.data
-                setTransaksi(result)
-                // console.log(result)
-            })
-    }
+    }, [])
+
+
 
     const addTransaksi = (data) => {
         return axiosReq.post(url, data)
@@ -53,6 +55,7 @@ const TransaksiContextProvider = (props) => {
                     icon: 'success',
                     title: 'Transaksi Berhasil'
                 })
+                window.location = '/admin'
             })
             .catch(err => console.error(err.data))
     }
@@ -79,6 +82,18 @@ const TransaksiContextProvider = (props) => {
 
     }
 
+    const transaksiHariIni = transaksi.filter(trx => {
+
+        let today = new Date();
+        let dd = String(today.getDate()).padStart(2, '0');
+        let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        let yyyy = String(today.getFullYear());
+
+        today = yyyy + '-' + mm + '-' + dd
+
+        return trx.tanggal_transaksi === today
+    })
+
     return (
         <TransaksiContext.Provider
             value={{
@@ -86,11 +101,12 @@ const TransaksiContextProvider = (props) => {
                 setQueryFrontResult,
                 isLoading,
                 setIsLoading,
-                getTransaksi,
                 addTransaksi,
                 searchTransaksi,
                 searchResult,
-                frontQuery
+                frontQuery,
+                transaksi,
+                transaksiHariIni
             }}>
             {props.children}
         </TransaksiContext.Provider>

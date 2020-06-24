@@ -9,15 +9,15 @@ import { TransaksiContext } from '../../../Context/TransaksiContext'
 
 export default function Transaksi() {
     const { getTransaksi, searchTransaksi, searchResult } = useContext(TransaksiContext)
-    useEffect(() => {
-        getTransaksi()
-        // console.log(transaksi)
-    }, [getTransaksi])
+    // useEffect(() => {
+    //     getTransaksi()
+    //     // console.log(transaksi)
+    // }, [getTransaksi])
     const handleChange = (e) => {
         searchTransaksi(e.target.value)
     }
     return (
-        <div className="container">
+        <>
             <div className="card mb-3">
                 <div className="card-body">
                     <h3>Transaksi</h3>
@@ -41,6 +41,6 @@ export default function Transaksi() {
                     <AccordionList id={`collapse-${3}`} /> */}
                 </div>
             </div>
-        </div>
+        </>
     )
 }

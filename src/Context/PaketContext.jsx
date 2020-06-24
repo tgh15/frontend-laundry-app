@@ -34,10 +34,10 @@ const PaketContextProvider = (props) => {
             setPaket(...paket, resultData)
         }
         getPaket()
-    }, [])
+    }, []) // eslint-disable-next-line
 
     const tambahPaket = (props) => {
-        if (props === undefined || (props.paket === "" || props.harga === "")) {
+        if (props === undefined || (props.paket === "" || props.harga === "" || props.kategori === "")) {
             return Toast.fire({
                 icon: 'warning',
                 title: 'input tidak boleh kosong'
@@ -53,10 +53,11 @@ const PaketContextProvider = (props) => {
                 })
             })
             .catch(err => (
-                Toast.fire({
-                    icon: 'error',
-                    title: 'Gagal ditambahkan'
-                })
+                // Toast.fire({
+                //     icon: 'error',
+                //     title: 'Gagal ditambahkan'
+                // })
+                console.log(err)
             ))
     }
 
@@ -95,6 +96,7 @@ const PaketContextProvider = (props) => {
                     if (el.id === id) {
                         el.paket = edited.paket
                         el.harga = edited.harga
+                        el.kategori = edited.kategori
                     }
                     return el
                 })
