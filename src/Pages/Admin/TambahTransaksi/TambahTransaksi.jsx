@@ -51,8 +51,7 @@ export default function TambahTransaksi() {
             kuantitas: '',
             paket: '',
             harga_paket: 0,
-            harga: 0,
-            kiloan: 1
+            harga: 0
         }
         ]))
     }
@@ -116,7 +115,7 @@ export default function TambahTransaksi() {
             }
         }
         let data = Object.assign(identitas, { transaksilist: items, total_bayar: hargaTotal() }) //Menyusun objek dari state
-        // console.log(data)
+        console.log(data)
         addTransaksi(data) //Melakukan request post ke API
     }
 

@@ -5,12 +5,9 @@ import { faSave, faTimesCircle, faTrash, faEdit } from '@fortawesome/free-solid-
 
 //Context
 import { PaketContext } from '../../../Context/PaketContext'
-import { KategoriContext } from '../../../Context/KategoriContext'
 
 export default function PaketItem(props) {
     const { hapusPaket, editPaket } = useContext(PaketContext)
-    const { kategori } = useContext(KategoriContext)
-
     const [isEdit, setIsEdit] = useState(false)
     const editPaketField = () => {
         setIsEdit(!isEdit)
@@ -29,16 +26,6 @@ export default function PaketItem(props) {
         isEdit ? (
             <tr key={props.index}>
                 <th scope="row">{props.index + 1}</th>
-                <td>
-                    <select name="kategori_id" defaultValue={2} className="custom-select custom-select-sm" id={`kategori_id-${props.index}`}>
-                        <option disabled value="0">Kategori</option>
-                        {kategori.length > 0 ? (
-                            kategori.map((kat, index) => (
-                                <option key={index} value={kat.id}>{kat.kategori}</option>
-                            ))
-                        ) : (<option value="">Kosong</option>)}
-                    </select>
-                </td>
                 <td><input type="text" className='form-control form-control-sm' name="paket" defaultValue={props.el.paket} id={`paket-${props.index}`} /></td>
                 <td><input type="number" className='form-control form-control-sm' name="harga" defaultValue={props.el.harga} id={`harga-${props.index}`} /></td>
                 <td>
@@ -53,7 +40,6 @@ export default function PaketItem(props) {
         ) : (
                 <tr key={props.index}>
                     <th scope="row">{props.index + 1}</th>
-                    <td>{props.el.kategori}</td>
                     <td>{props.el.paket}</td>
                     <td>Rp. {props.el.harga}</td>
                     <td>

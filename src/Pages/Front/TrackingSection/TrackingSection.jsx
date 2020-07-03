@@ -33,6 +33,8 @@ export default function TrackingSection() {
             </form>
             {isLoading ? <Loading /> : null}
             {queryFrontResult.length === 1 ?
+
+                // console.log(queryFrontResult)
                 queryFrontResult[0].hasOwnProperty('message') ? (
                     <p>{queryFrontResult[0].message}</p>
                 ) : (

@@ -1,8 +1,28 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import Loading from '../../../Components/Loading/Loading'
+import DatePicker from 'react-datepicker'
+import 'react-datepicker/dist/react-datepicker.css';
+import { LaporanContext } from '../../../Context/LaporanContext'
+import LaporanTable from './LaporanTable';
 
 export default function Laporan() {
-    const [isLoading, setIsLoading] = useState(true)
+    const { getLaporan, isLoading, dataLaporan } = useContext(LaporanContext)
+    // const [isLoading, setIsLoading] = useState(false)
+    const [date, setDate] = useState({ start: new Date(), end: new Date() })
+
+    const handleChangeStart = (e) => {
+        setDate({ ...date, start: e })
+        // console.log(e)
+    }
+    const handleChangeEnd = (e) => {
+        setDate({ ...date, end: e })
+        // console.log(e)
+    }
+
+    const submitSearch = async () => {
+        getLaporan(date)
+    }
+
     return (
         <>
             <div className="mb-4">
@@ -15,21 +35,35 @@ export default function Laporan() {
                 <div className="card-body">
                     <form>
                         <div className="form-row">
-                            <div className="form-group col-md-6">
+                            <div className="form-group col-md-6 d-flex flex-column">
                                 <label htmlFor="inputEmail4">Tanggal Awal</label>
-                                <input type="text" className="form-control date-picker" data-date-format="dd-mm-yyyy" id="tanggal-awal" />
+                                <DatePicker
+                                    selected={date.start}
+                                    onChange={handleChangeStart}
+                                    dateFormat="dd/MM/yyyy"
+                                    name="start"
+                                    className="form-control" />
+                                {/* <input type="text" className="form-control date-picker" id="tanggal-awal" /> */}
                             </div>
-                            <div className="form-group col-md-6">
+                            <div className="form-group col-md-6 d-flex flex-column">
                                 <label htmlFor="inputPassword4">Tanggal Akhir</label>
-                                <input type="text" className="form-control date-picker" data-date-format="dd-mm-yyyy" id="tanggal-akhir" />
+                                <DatePicker
+                                    selected={date.end}
+                                    onChange={handleChangeEnd}
+                                    dateFormat="dd/MM/yyyy"
+                                    name="start"
+                                    className="form-control" />
+                                {/* <input type="text" className="form-control date-picker" id="tanggal-akhir" /> */}
                             </div>
                         </div>
-                        <button type="button" onClick={() => setIsLoading(!isLoading)} className="btn btn-primary btn-block">Cari</button>
+                        <button type="button" onClick={submitSearch} className="btn btn-primary btn-block">Cari</button>
                     </form>
                 </div>
             </div>
             {isLoading ? <Loading /> : null}
-
+            {dataLaporan.length > 0 ? (
+                <LaporanTable dataLaporan={dataLaporan} tanggal={date} />
+            ) : (null)}
         </>
     )
 }

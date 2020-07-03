@@ -8,9 +8,12 @@ export default function ContactSection() {
             <div className="row">
                 <div className="col-md-4">
                     <ul>
-                        <li><span>Alamat</span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Suscipit!</li>
-                        <li><span>Telepon</span>082349104692</li>
-                        <li><span>Email</span>test@email.com</li>
+                        <li><span>Alamat</span>Jl. Poros Kariango No.1, Bontoa, Kec. Mandai, Maros</li>
+                        <li><span>Telepon</span>0853-9709-2388</li>
+                        <li><span>Jam Layanan</span>
+                            <i>Senin - Jumat : 08.00 - 21.00</i>
+                            <i>Tanggal Merah : Libur</i>
+                        </li>
                     </ul>
                 </div>
                 <div className="col-md-8">

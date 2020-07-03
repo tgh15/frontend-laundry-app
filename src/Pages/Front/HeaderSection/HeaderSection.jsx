@@ -22,13 +22,15 @@ export default function HeaderSection() {
     return (
         <>
             <nav id="front-nav" className={navClass}>
-                <div className="logo">Logo</div>
+                <div className="logo">
+                    <img src="https://1.bp.blogspot.com/-pIDp92mBQ_I/Xv9Qi1klZ9I/AAAAAAAACdA/LjQEW8smvyoKL-EA4CznV1BSpL_Z17UyACLcBGAsYHQ/s640/Logo.png" alt="Logo" />
+                </div>
                 <ul className="menu">
                     <li className="menu-item"><a href="#">Home</a></li>
-                    <li className="menu-item"><a href="#about">About Us</a></li>
-                    <li className="menu-item"><a href="#package">Package</a></li>
-                    <li className="menu-item"><a href="#tracking">Track</a></li>
-                    <li className="menu-item"><a href="#contact">Contact</a></li>
+                    <li className="menu-item"><a href="#about">Tentang Kami</a></li>
+                    <li className="menu-item"><a href="#package">Paket</a></li>
+                    <li className="menu-item"><a href="#tracking">Lacak</a></li>
+                    <li className="menu-item"><a href="#contact">Kontak</a></li>
                 </ul>
                 <div className="navToggle">
                     <input type="checkbox" />

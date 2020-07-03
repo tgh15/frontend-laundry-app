@@ -24,14 +24,14 @@ import Landing from "./Pages/Front/Landing";
 import AuthContextProvider from './Context/AuthContext';
 import PaketContextProvider from './Context/PaketContext';
 import TransaksiContextProvider from './Context/TransaksiContext';
-import KategoriContextProvider from './Context/KategoriContext';
+import LaporanContextProvider from './Context/LaporanContext';
 
 function App() {
   return (
     <AuthContextProvider>
-      <KategoriContextProvider>
-        <PaketContextProvider>
-          <TransaksiContextProvider>
+      <PaketContextProvider>
+        <TransaksiContextProvider>
+          <LaporanContextProvider>
             <Router>
               <Switch>
                 <Route path="/" exact>
@@ -55,9 +55,9 @@ function App() {
                 <Route component={NoMatch} />
               </Switch>
             </Router>
-          </TransaksiContextProvider>
-        </PaketContextProvider>
-      </KategoriContextProvider>
+          </LaporanContextProvider>
+        </TransaksiContextProvider>
+      </PaketContextProvider>
     </AuthContextProvider>
   );
 }

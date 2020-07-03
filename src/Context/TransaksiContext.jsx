@@ -44,7 +44,6 @@ const TransaksiContextProvider = (props) => {
     }, [])
 
 
-
     const addTransaksi = (data) => {
         return axiosReq.post(url, data)
             .then(response => {
@@ -55,7 +54,6 @@ const TransaksiContextProvider = (props) => {
                     icon: 'success',
                     title: 'Transaksi Berhasil'
                 })
-                window.location = '/admin'
             })
             .catch(err => console.error(err.data))
     }
@@ -74,7 +72,7 @@ const TransaksiContextProvider = (props) => {
                 let result = response.data.data
                 setIsLoading(false)
                 setQueryFrontResult([result])
-                console.log(result)
+                // console.log(result)
             }).catch(err => {
                 setIsLoading(false)
                 setQueryFrontResult([{ message: 'data tidak ditemukan' }])
@@ -94,6 +92,41 @@ const TransaksiContextProvider = (props) => {
         return trx.tanggal_transaksi === today
     })
 
+    const updateTransaksi = (trx) => {
+        let id = trx.id
+        return Swal.fire({
+            title: 'Update Transaksi?',
+            text: 'Aksi ini tidak dapat diulang',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Update',
+            cancelButtonText: 'Batal'
+        }).then((result) => {
+            if (result.value) {
+
+                axiosReq.put(url + '/' + id, trx)
+                    .then(response => {
+                        console.log(response.data.data)
+                        const editedTransaksi = response.data.data
+                        let transaksiListCopy = transaksi.map(el => {
+                            if (el.id == id) {
+                                el.status_pembayaran = editedTransaksi.status_pembayaran
+                                el.status_pengerjaan = editedTransaksi.status_pengerjaan
+                            }
+                            return el
+                        })
+                        setTransaksi(transaksi => transaksi = transaksiListCopy)
+                        Toast.fire({
+                            icon: 'success',
+                            title: 'Berhasil diupdate'
+                        })
+                    })
+
+            }
+            // console.log(transaksi.id)
+            // console.log(transaksi)
+        })
+    }
     return (
         <TransaksiContext.Provider
             value={{
@@ -106,7 +139,8 @@ const TransaksiContextProvider = (props) => {
                 searchResult,
                 frontQuery,
                 transaksi,
-                transaksiHariIni
+                transaksiHariIni,
+                updateTransaksi
             }}>
             {props.children}
         </TransaksiContext.Provider>

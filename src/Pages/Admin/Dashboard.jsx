@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 
 import { TransaksiContext } from '../../Context/TransaksiContext'
 import { PaketContext } from '../../Context/PaketContext'
@@ -7,11 +7,22 @@ import { PaketContext } from '../../Context/PaketContext'
 import InfoBox from '../../Components/InfoBox/InfoBox'
 
 export default function Dashboard() {
-    const { transaksiHariIni, transaksi } = useContext(TransaksiContext)
+    const { transaksiHariIni, transaksi, updateTransaksi } = useContext(TransaksiContext)
     const { paket } = useContext(PaketContext)
     // const filter = transaksi.filter(trx => {
     //     return trx.status_pembayaran = 0
     // })
+
+    const updatePembayaran = (transaksi) => {
+        let obj = transaksi
+        obj.status_pembayaran = true
+        updateTransaksi(obj)
+    }
+    const updatePengerjaan = (transaksi) => {
+        let obj = transaksi
+        obj.status_pengerjaan = false
+        updateTransaksi(obj)
+    }
 
     return (
         <>
@@ -50,12 +61,15 @@ export default function Dashboard() {
                                             transaksiHariIni.map((el, key) => (
                                                 <tr key={key} data-toggle="modal" data-target="#exampleModal">
                                                     <th scope="row">{key + 1}</th>
-                                                    <td>{el.kode_transaksi}</td>
+                                                    <td><strong>{el.kode_transaksi}</strong></td>
                                                     <td>{el.nama_pelanggan}</td>
                                                     <td>{el.no_hp}</td>
                                                     {/* <td>{el.alamat}</td> */}
                                                     <td>
-                                                        {el.status_pembayaran ? <button className="btn btn-success btn-sm">Lunas</button> : <button className="btn btn-danger btn-sm">Belum Lunas</button>}
+                                                        {el.status_pembayaran ? <button className="btn btn-success btn-sm">Lunas</button> : <button className="btn btn-danger btn-sm" onClick={() => updatePembayaran(el)}>Belum Lunas</button>}
+                                                    </td>
+                                                    <td>
+                                                        {el.status_pengerjaan ? <button className="btn btn-danger btn-sm" onClick={() => updatePengerjaan(el)}>Proses</button> : <button className="btn btn-success btn-sm " >Selesai</button>}
                                                     </td>
                                                 </tr>
                                             ))

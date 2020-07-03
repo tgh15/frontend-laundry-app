@@ -12,3 +12,12 @@ footer#footer {
 footer#footer .logo {
     font-size: 70px;
 }
+
+footer#footer .logo img {
+    height: 150px;
+    padding: .5rem;
+}
+
+footer#footer a:hover {
+    color: yellow;
+}

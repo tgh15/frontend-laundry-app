@@ -1,6 +1,6 @@
 nav#front-nav {
     justify-content: space-around;
-    /* height: 80px; */
+    height: 80px;
     padding: 1rem;
     /* padding-bottom: 1rem; */
     display: flex;
@@ -31,6 +31,11 @@ nav#front-nav.navBar-scrolled {
 nav#front-nav .logo {
     margin-top: 0;
     font-size: 24px;
+
+}
+
+nav#front-nav .logo img {
+    height: 50px;
 }
 
 nav#front-nav .menu {
