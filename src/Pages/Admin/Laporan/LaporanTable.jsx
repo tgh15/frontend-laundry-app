@@ -1,4 +1,5 @@
 import React from 'react'
+import { ExportPdf } from '../ExportPdf'
 
 export default function LaporanTable({ dataLaporan }) {
     const generateTanggal = (tanggal) => {
@@ -9,12 +10,22 @@ export default function LaporanTable({ dataLaporan }) {
         let year = date.getFullYear()
         return day + ' ' + month + ' ' + year
     }
+    const exportPDF = () => {
+        let data = {
+            action: 'laporan',
+            tanggal: dataLaporan[0].tanggal_transaksi === dataLaporan[dataLaporan.length - 1].tanggal_transaksi ?
+                'Pada Tanggal ' + generateTanggal(dataLaporan[0].tanggal_transaksi) :
+                'Dari Tanggal ' + generateTanggal(dataLaporan[0].tanggal_transaksi) + ' sampai ' + generateTanggal(dataLaporan[dataLaporan.length - 1].tanggal_transaksi),
+            data: dataLaporan
+        }
+        ExportPdf(data)
+    }
     return (
         <>
             <div className="card mb-4">
                 <div className="card-header py-3 d-flex justify-content-between mb-3">
                     <h6 className="m-0 font-weight-bold text-primary d-flex align-items-center">Hasil Pencarian</h6>
-                    <button className="btn btn-primary btn-sm">Export PDF</button>
+                    <button className="btn btn-primary btn-sm" onClick={exportPDF}>Export PDF</button>
                 </div>
                 <div className="text-center">
                     <h5>Laporan Transaksi Berkah Laundry</h5>

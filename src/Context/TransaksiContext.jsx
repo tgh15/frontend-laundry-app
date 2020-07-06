@@ -1,6 +1,7 @@
 import React, { createContext, useState, useEffect } from 'react'
 import axios from 'axios'
 import Swal from "sweetalert2"
+import { ExportPdf } from '../Pages/Admin/ExportPdf'
 
 const axiosReq = axios.create()
 axiosReq.interceptors.request.use((config) => {
@@ -49,11 +50,13 @@ const TransaksiContextProvider = (props) => {
             .then(response => {
                 // console.log(response.data.data)
                 var result = response.data.data
+                let dataTransaksi = { action: 'nota', data: result }
                 setTransaksi([...transaksi, result])
                 Toast.fire({
                     icon: 'success',
                     title: 'Transaksi Berhasil'
                 })
+                ExportPdf(dataTransaksi)
             })
             .catch(err => console.error(err.data))
     }

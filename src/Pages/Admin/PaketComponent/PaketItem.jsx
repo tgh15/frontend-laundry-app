@@ -17,7 +17,6 @@ export default function PaketItem(props) {
         const data = {}
         data.paket = document.getElementById(`paket-${props.index}`).value
         data.harga = document.getElementById(`harga-${props.index}`).value
-        data.kategori_id = document.getElementById(`kategori_id-${props.index}`).value
         await editPaket(id, data)
         setIsEdit(!isEdit)
         console.log(data)

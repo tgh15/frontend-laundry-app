@@ -9,7 +9,7 @@ export default function Topbar() {
                 <i className="fa fa-bars"></i>
             </button>
             <div className="navbar-nav ml-auto">
-                <button onClick={logout} className="btn btn-danger nav-item">Keluar</button></div>
+                <button onClick={logout} className="btn btn-danger nav-item btn-sm">Keluar</button></div>
         </nav>
     )
 }

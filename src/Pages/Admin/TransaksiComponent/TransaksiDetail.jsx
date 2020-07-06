@@ -1,7 +1,18 @@
 import React from 'react'
 import TransaksiItemList from './TransaksiItemList'
+import { ExportPdf } from '../ExportPdf'
 
 export default function TransaksiDetail(props) {
+
+    const cetakNota = () => {
+        let data = {
+            action: 'nota',
+            data: props.el
+        }
+        ExportPdf(data)
+        console.log(props.el)
+    }
+
     return (
         <div className="accordion mt-3" id={props.id}>
             <div className="card">
@@ -14,25 +25,33 @@ export default function TransaksiDetail(props) {
 
                 <div id={`collapse${props.id}`} className="collapse mb-3" aria-labelledby="headingOne" data-parent={`#${props.id}`}>
                     <div className="card-body">
-                        <dl className="row">
-                            <dt className="col-sm-3">Kode Transaksi</dt>
-                            <dd className="col-sm-9 text-danger"><strong>{props.el.kode_transaksi}</strong></dd>
+                        <div className="row"><div className="col-sm-9">
+                            <dl className="row">
+                                <dt className="col-sm-4">Kode Transaksi</dt>
+                                <dd className="col-sm-6 text-danger"><strong>{props.el.kode_transaksi}</strong></dd>
 
-                            <dt className="col-sm-3">Tanggal Transaksi</dt>
-                            <dd className="col-sm-9">{props.el.tanggal_transaksi}</dd>
+                                <dt className="col-sm-4">Tanggal Transaksi</dt>
+                                <dd className="col-sm-6">{props.el.tanggal_transaksi}</dd>
 
-                            <dt className="col-sm-3">Nama Pelanggan</dt>
-                            <dd className="col-sm-9">{props.el.nama_pelanggan}</dd>
+                                <dt className="col-sm-4">Nama Pelanggan</dt>
+                                <dd className="col-sm-6">{props.el.nama_pelanggan}</dd>
 
-                            <dt className="col-sm-3">No. Hp</dt>
-                            <dd className="col-sm-9">{props.el.no_hp}</dd>
+                                <dt className="col-sm-4">No. Hp</dt>
+                                <dd className="col-sm-6">{props.el.no_hp}</dd>
 
-                            <dt className="col-sm-3">Alamat</dt>
-                            <dd className="col-sm-9">{props.el.alamat}</dd>
+                                <dt className="col-sm-4">Alamat</dt>
+                                <dd className="col-sm-6">{props.el.alamat}</dd>
 
-                            <dt className="col-sm-3">Status Pembayaran</dt>
-                            <dd className={`col-sm-9 ${props.el.status_pembayaran ? "text-success" : "text-danger"}`}>{props.el.status_pembayaran ? "Lunas" : "Belum Lunas"}</dd>
-                        </dl>
+                                <dt className="col-sm-4">Status Pembayaran</dt>
+                                <dd className={`col-sm-6 ${props.el.status_pembayaran ? "text-success" : "text-danger"}`}>{props.el.status_pembayaran ? "Lunas" : "Belum Lunas"}</dd>
+                            </dl>
+                        </div>
+                            <div className="col-sm-3">
+                                <button className="btn btn-primary btn-sm m-2" onClick={cetakNota}>Cetak Nota</button>
+                                <button className="btn btn-primary btn-sm m-2">Cetak Nota</button>
+                                <button className="btn btn-primary btn-sm m-2">Cetak Nota</button>
+                            </div>
+                        </div>
                         <hr />
                         <h4>Rincian Transaksi</h4>
                         <div className="table-responsive-md">
