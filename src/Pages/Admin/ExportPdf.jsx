@@ -190,5 +190,5 @@ export const ExportPdf = (data) => {
             }
         }
     }
-    pdfMake.createPdf(dd).open();
+    pdfMake.createPdf(dd).print();
 }
