@@ -175,6 +175,11 @@ section#header .heading .button:hover {
 
     }
 
+    section#header .heading h1 {
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 1) !important;
+
+    }
+
     section#header .heading {
         margin-left: 0;
         width: 80%;

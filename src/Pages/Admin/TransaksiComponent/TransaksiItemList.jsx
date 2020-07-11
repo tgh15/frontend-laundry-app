@@ -6,7 +6,7 @@ export default function TransaksiItemList(props) {
             <th scope="row">{props.index + 1}</th>
             <td>{props.tr.kuantitas}{props.tr.kiloan ? " Kg" : ""} </td>
             <td>{props.tr.paket}</td>
-            <td>{props.tr.harga}</td>
+            <td>Rp. {props.tr.harga}</td>
         </tr>
     )
 }

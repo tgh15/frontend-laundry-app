@@ -121,10 +121,8 @@ export default function TambahTransaksi() {
 
     return (
         <>
-            <div className="card mb-3">
-                <div className="card-body">
-                    <h3>Tambah Transaksi</h3>
-                </div>
+            <div className="mb-3">
+                <h3 className="h3 mb-0 text-gray-800">Transaksi/Tambah</h3>
             </div>
             <div className="card">
                 <form onSubmit={handleSubmit}>

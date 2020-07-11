@@ -3,6 +3,8 @@ import axios from 'axios'
 import Swal from "sweetalert2"
 import { ExportPdf } from '../Pages/Admin/ExportPdf'
 
+import { Redirect } from 'react-router-dom'
+
 const axiosReq = axios.create()
 axiosReq.interceptors.request.use((config) => {
     const token = localStorage.getItem('token');
@@ -56,7 +58,8 @@ const TransaksiContextProvider = (props) => {
                     icon: 'success',
                     title: 'Transaksi Berhasil'
                 })
-                ExportPdf(dataTransaksi)
+                // ExportPdf(dataTransaksi)
+                return <Redirect push to="/admin" />
             })
             .catch(err => console.error(err.data))
     }
@@ -105,6 +108,7 @@ const TransaksiContextProvider = (props) => {
             confirmButtonText: 'Update',
             cancelButtonText: 'Batal'
         }).then((result) => {
+            console.log(result.value)
             if (result.value) {
 
                 axiosReq.put(url + '/' + id, trx)

@@ -33,12 +33,6 @@ export default class AuthContextProvider extends Component {
     }
 
     login = (credential) => {
-        // credential.email == '' ? (
-        //     Toast.fire({
-        //         icon: 'error',
-        //         title: 'Berhasil diedit'
-        //     })
-        // ) : console.log(credential.email)
         return axiosReq.post('https://teguh-backend.herokuapp.com/api/v1/login', credential)
             .then(response => {
                 const token = response.data.data.token

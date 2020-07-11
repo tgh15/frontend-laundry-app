@@ -41,8 +41,8 @@ export default function HeaderSection() {
             </nav>
             <section id="header">
                 <div className="heading">
-                    <span>Lorem ipsum dolor sit amet.</span>
-                    <h1>A Better Place to do Your Laundry</h1>
+                    <span></span>
+                    <h1 >Tempat Terbaik Untuk Mencuci Pakaian Anda</h1>
                     <a href="#contact" className="button">Lihat Lokasi</a>
                 </div>
             </section>

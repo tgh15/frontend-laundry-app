@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom'
 
 //CSS
 import './Login.css'
+
 import { AuthContext } from '../../Context/AuthContext'
 
 export default function Login() {
@@ -14,7 +15,6 @@ export default function Login() {
     }
     const handleSubmit = (e) => {
         e.preventDefault()
-        // console.log(form)
         login(form)
     }
 
@@ -30,7 +30,6 @@ export default function Login() {
                     <input type="password" name="password" placeholder="Password Anda" />
                     <input type="submit" value="Masuk" />
                 </form>
-                <a href="#">Lupa Password?</a>
             </div>
         </div>
     )

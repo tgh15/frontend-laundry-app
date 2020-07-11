@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 
 import { TransaksiContext } from '../../Context/TransaksiContext'
 import { PaketContext } from '../../Context/PaketContext'
@@ -9,9 +9,6 @@ import InfoBox from '../../Components/InfoBox/InfoBox'
 export default function Dashboard() {
     const { transaksiHariIni, transaksi, updateTransaksi } = useContext(TransaksiContext)
     const { paket } = useContext(PaketContext)
-    // const filter = transaksi.filter(trx => {
-    //     return trx.status_pembayaran = 0
-    // })
 
     const updatePembayaran = (transaksi) => {
         let obj = transaksi
@@ -33,7 +30,7 @@ export default function Dashboard() {
             <div className="row">
                 <InfoBox title={"Paket"} value={paket.length} color={"success"} />
                 <InfoBox title={"Semua Transaksi"} value={transaksi.length} color={"warning"} />
-                {/* <InfoBox title={"Semua Transaksi"} value={filter.length} color={"warning"} /> */}
+                <InfoBox title={"Transaksi Hari Ini"} value={transaksiHariIni.length} color={"info"} />
             </div>
 
             <div className="row mt-3">

@@ -18,14 +18,12 @@ export default function Transaksi() {
     }
     return (
         <>
-            <div className="card mb-3">
-                <div className="card-body">
-                    <h3>Transaksi</h3>
-                    <div className="col-md-8 offset-md-2 input-group">
-                        <input className="form-control" placeholder="cari transaksi" type="text" onInput={handleChange} onChange={handleChange} />
-                        <div className="input-group-append">
-                            <span className="input-group-text">{searchResult.length} Hasil</span>
-                        </div>
+            <div className="mb-4">
+                <h3 className="h3 mb-0 text-gray-800">Transaksi</h3>
+                <div className="col-md-8 offset-md-2 input-group">
+                    <input className="form-control" placeholder="cari transaksi" type="text" onInput={handleChange} onChange={handleChange} />
+                    <div className="input-group-append">
+                        <span className="input-group-text">{searchResult.length} Hasil</span>
                     </div>
                 </div>
             </div>
